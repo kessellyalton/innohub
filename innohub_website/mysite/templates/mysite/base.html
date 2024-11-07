@@ -1,0 +1,174 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{% block title %}InnoHub Liberia{% endblock %}</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/logo.ico' %}" rel="icon">
+  <link href="{% static 'img/logo.ico' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Jost|Poppins" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto ps-5"><a href="{% url 'home' %}">InnoHub Liberia</a></h1>
+
+      <nav id="navbar" class="navbar pe-3">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'home' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'about' %}">About</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'services' %}">Services</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'portfolio-list' %}">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'team' %}">Team</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'blog' %}">Blog</a></li>
+          <li class="dropdown">
+            <a href="#"><span>Resources</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'fnq' %}">Frequently Ask Questions</a></li>
+              <li class="dropdown">
+                <a href="{% url 'documents' %}"><span>Upload Documents</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{% url 'school' %}">Reports</a></li>
+                  <li><a href="{% url 'business' %}">Presentations</a></li>
+                  <li><a href="{% url 'hospital' %}">Lectures</a></li>
+                  <li><a href="{% url 'recreation' %}">Publications</a></li>
+                  <li><a href="{% url 'resort' %}">Others</a></li>
+                </ul>
+              </li>
+              <li><a href="{% url 'press' %}">News and Events</a></li>
+              <li><a href="{% url 'dash' %}">Dashboard</a></li>
+              <li><a href="{% url 'buy' %}">Buy and Sell</a></li>
+              <li><a href="{% url 'directory' %}">Directory</a></li>
+              <li><a href="{% url 'resume' %}">Documents</a></li>
+              <li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="{% url 'contact' %}">Contact</a></li>
+          <li><a class="getstarted scrollto" href="{% url 'about' %}">Get Started</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer id="footer">
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <h4>Join Our Newsletter</h4>
+            <p>Stay updated with the latest insights, news, and exclusive offers—directly to your inbox. Don't miss a beat!</p>
+            <form action="{% url 'newsletter_signup' %}" method="post">
+              {% csrf_token %}
+              <div class="input-group mb-3">
+                <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+              </div>
+              <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Footer Links and Contacts -->
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>InnoHub Liberia</h3>
+            <p>
+              Old CID Road<br>
+              Mamba Point, Monrovia<br>
+              Liberia<br><br>
+              <strong>Phone:</strong> +231 888757477<br>
+              <strong>Email:</strong> info@innohubliberia.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'about' %}">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'services' %}">Services</a></li>
+               <li><a class="nav-link scrollto" href="{% url 'portfolio-list' %}">Portfolio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'terms'%}">Terms of service</a></li>
+
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'privy'%}">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Research and Consultancy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Data Analytics and Reporting</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">STEM Education Promotion</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Data Infrastructure Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Strategic Planning</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p>Stay connected with us for the latest insights, updates, and inspiration – follow InnoHub Liberia on social media!</p>
+            <div class="social-links mt-3">
+              <a href="https://x.com/Innohublib" class="twitter" target="_blank"><i class="bx bxl-twitter"></i></a>
+              <a href="https://www.facebook.com/akesselly" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
+              <a href="https://www.instagram.com/altonv.kesselly/" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.youtube.com/channel/UCiY1A9YAQFMBPcHTjyd9IOA" class="youtube" target="_blank"><i class="bx bxl-youtube"></i></a>
+              <a href="https://www.linkedin.com/in/innohub-liberia-a3507b337/" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html>

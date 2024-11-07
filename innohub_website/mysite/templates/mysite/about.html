@@ -1,0 +1,117 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+
+{% block title %}About Us - The Hub{% endblock %}
+
+{% block content %}
+<!-- ======= About Us Section ======= -->
+<section id="about" class="about">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <h2>About Us</h2>
+            <p>At The Hub, we are dedicated to fostering innovation, research, and technological advancement in education and scientific fields. Our mission is to provide unparalleled services and solutions to empower institutions, businesses, and governments in achieving their goals.</p>
+        </div>
+        <div class="row content">
+            <div class="col-lg-6">
+                <h4>Our Objectives</h4>
+                <ul>
+                    <li><i class="ri-check-double-line"></i> <strong>Research and Consultancy:</strong> Engage in cutting-edge research across educational and scientific domains.</li>
+                    <li><i class="ri-check-double-line"></i> <strong>Data Analytics and Reporting:</strong> Perform in-depth data analysis, statistical modeling, predictive analysis, and customized reporting.</li>
+                    <li><i class="ri-check-double-line"></i> <strong>Data Infrastructure Development:</strong> Design and implement robust data systems and recommendation engines.</li>
+                    <li><i class="ri-check-double-line"></i> <strong>Strategic Planning:</strong> Provide strategic planning and implementation services for educational and scientific institutions.</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <ul>
+                    <li><i class="ri-check-double-line"></i> <strong>STEM Education Promotion:</strong> Develop and promote Science, Technology, Engineering, and Mathematics programs.</li>
+                    <li><i class="ri-check-double-line"></i> <strong>Training and Capacity Building:</strong> Offer workshops, training, and mentorship for educators and students.</li>
+                    <li><i class="ri-check-double-line"></i> <strong>Technology Import and Supply:</strong> Import and supply essential technology products and systems.</li>
+                    <li><i class="ri-check-double-line"></i> <strong>Customized Software Solutions:</strong> Create tailored software solutions for businesses, institutions, and government agencies.</li>
+                </ul>
+                <a href="{% url 'more' %}" class="btn-learn-more">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section><!-- End About Us Section -->
+
+<!-- ======= Our Expertise Section ======= -->
+<section id="why-us" class="why-us section-bg">
+    <div class="container-fluid" data-aos="fade-up">
+        <div class="row">
+            <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+                <div class="content">
+                    <h3>Why Choose The Hub?</h3>
+                    <p>Our comprehensive approach to data-driven solutions, innovative technologies, and strategic planning sets us apart in the industry.</p>
+                </div>
+                <div class="accordion-list">
+                    <ul>
+                        <li>
+                            <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Industry-Leading Research & Analysis<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
+                                <p>Our team of experts bridges research with real-world solutions across key sectors. In education, we focus on enhancing learning outcomes, developing innovative curricula, and promoting equity in STEM, ensuring that all students have access to transformative experiences. In science and technology, our research tackles global issues like public health and climate change, contributing to sustainable, impactful solutions. Our economic and business insights drive resilience and growth, supporting organizations with data-driven strategies for sustainable development. By aligning with each partner’s specific goals, we provide tailored insights, empowering organizations to face challenges with confidence and prepare for the future.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Customized Solutions<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+                                <p>Our team specializes in creating tailored technology and software solutions designed to address the unique challenges and objectives of each client. By deeply understanding our clients’ specific needs, we develop tools and systems that enhance operational efficiency, drive growth, and provide a seamless user experience. Whether it’s building custom applications, integrating data infrastructure, or developing specialized software features, we ensure that every solution is precisely aligned with the client’s business goals. Through collaboration and continuous support, we help our clients leverage technology to gain a competitive edge and achieve long-term success.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Empowerment through STEM<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
+                                <p>We are dedicated to advancing STEM education to empower the next generation with critical skills for the future. By fostering curiosity and proficiency in Science, Technology, Engineering, and Mathematics, we aim to prepare young minds for success in a rapidly evolving world. Our programs and initiatives are designed to make STEM accessible and engaging, inspiring students to pursue these fields and equipping them with the knowledge and confidence they need to tackle real-world challenges. Through partnerships with educators and institutions, we strive to create a foundation for lifelong learning and innovation.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("{% static 'assets/img/why-us.png' %}");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+        </div>
+    </div>
+</section><!-- End Our Expertise Section -->
+
+<!-- ======= Skills Section ======= -->
+<section id="skills" class="skills">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <h3>Our Core Competencies</h3>
+            <p>From technical skills to strategic insight, our team is equipped to handle complex challenges in education, technology, and beyond.</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
+                <img src="{% static 'assets/img/skills.png' %}" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+                <div class="skills-content">
+                    <div class="progress">
+                        <span class="skill">Data Analysis <i class="val">95%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <span class="skill">STEM Education Programs <i class="val">90%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <span class="skill">Strategic Planning <i class="val">85%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <span class="skill">Customized Software Solutions <i class="val">88%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- End Skills Section -->
+
+{% endblock %}
