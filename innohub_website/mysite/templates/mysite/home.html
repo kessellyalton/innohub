@@ -12,19 +12,21 @@
                 <h2>InnoHub Liberia - dedicated to fostering innovation through education, research, and technology solutions.</h2>
                 <div class="d-flex justify-content-center justify-content-lg-start">
                     <a href="{% url 'about' %}" class="btn-get-started scrollto">Get Started</a>
-                    <a href="https://www.youtube.com/channel/UCiY1A9YAQFMBPcHTjyd9IOA" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                    <a href="https://www.youtube.com/channel/UCiY1A9YAQFMBPcHTjyd9IOA" class="youtube  btn-watch-video" target="_blank"   rel="noopener noreferrer">
+                        <i class="bi bi-play-circle"></i><span>Watch Video</span>
+                    </a>
                 </div>
 
-    {% if messages %}
-  <div class="container mt-4">
-    {% for message in messages %}
-      <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %} alert-dismissible fade show" role="alert">
-        {{ message }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    {% endfor %}
-  </div>
-{% endif %}
+                {% if messages %}
+                <div class="container mt-4">
+                    {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
                 <img src="{% static 'assets/img/svg1.webp' %}" class="img-fluid animated" alt="">
