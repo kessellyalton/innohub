@@ -1,0 +1,17 @@
+{% extends "mysite/base.html" %}
+{% block title %}{{ article.title }} - InnoHub Liberia{% endblock %}
+
+{% block content %}
+<section class="py-5 pt-10">
+    <div class="container">
+        <h1>{{ article.title }}</h1>
+        <div class="text-muted mb-4">
+            By {{ article.author }} | {{ article.date_posted }}
+        </div>
+        {% if article.image %}
+            <img src="{{ article.image.url }}" class="img-fluid mb-4" alt="{{ article.title }}">
+        {% endif %}
+        <div>{{ article.content|safe }}</div>
+    </div>
+</section>
+{% endblock %}

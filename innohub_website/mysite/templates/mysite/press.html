@@ -6,93 +6,72 @@
 {% block content %}
 <section class="bg-light py-5 mt-5 mb-5">
     <div class="container-fluid px-lg-5 px-md-4 px-3">
+
         <!-- Featured Story -->
         {% if featured_post %}
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Featured Story</h6>
-            <div>
-                <a class="text-arrow-icon small" href="#!">
-                    More headlines
-                    <i data-feather="arrow-right"></i>
-                </a>
-            </div>
+            <a class="text-arrow-icon small" href="{% url 'category_articles' featured_post.category %}">
+                More headlines <i data-feather="arrow-right"></i>
+            </a>
         </div>
-        <hr class="mb-4" />
-        <div class="card mb-4">
-            <div class="card-body p-0">
-                <div class="row g-0">
-                    <div class="col-lg-6 p-lg-5 p-4">
-                        <a class="badge badge-marketing bg-primary-soft rounded-pill text-primary mb-3" href="#!">{{ featured_post.category }}</a>
-                        <a class="text-dark" href="#!"><h1>{{ featured_post.title }}</h1></a>
-                        <p>{{ featured_post.content|truncatewords:40 }}</p>
-                        <a class="text-arrow-icon small" href="#!">Read more <i data-feather="arrow-right"></i></a>
-                    </div>
-                    <div class="col-lg-6 align-self-stretch bg-img-cover d-none d-lg-flex"
-                         style="background-image: url('{% if featured_post.image %}{{ featured_post.image.url }}{% else %}{% static 'default-image.jpg' %}{% endif %}');
-                                background-size: cover; background-position: center; max-width: 100%; max-height: 400px;">
-                    </div>
+        <div class="card mb-4 shadow-sm">
+            <div class="row g-0">
+                <div class="col-lg-6 p-lg-5 p-4">
+                    <span class="badge bg-primary mb-3">{{ featured_post.get_category_display }}</span>
+                    <h2><a href="{% url 'article_detail' featured_post.id %}" class="text-dark">{{ featured_post.title }}</a></h2>
+                    <p>{{ featured_post.content|striptags|truncatewords:40 }}</p>
+                    <a href="{% url 'article_detail' featured_post.id %}" class="btn btn-primary">Read more</a>
+                </div>
+                <div class="col-lg-6 d-none d-lg-flex align-items-center"
+                     style="background-image: url('{% if featured_post.image %}{{ featured_post.image.url }}{% else %}{% static 'default-image.jpg' %}{% endif %}'); background-size: cover; background-position: center; height: 100%;">
                 </div>
             </div>
         </div>
         {% endif %}
 
         <!-- Top Stories -->
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="mb-4">
             <h6 class="mb-0">Top Stories</h6>
-            <div>
-                <a class="text-arrow-icon small" href="#!">View more <i data-feather="arrow-right"></i></a>
-            </div>
-        </div>
-        <hr class="mb-4" />
-        <div class="row gx-5">
-            {% for story in top_stories %}
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <img src="{% if story.image %}{{ story.image.url }}{% else %}{% static 'default-image.jpg' %}{% endif %}"
-                         class="card-img-top img-fluid" style="max-width: 100%; max-height: 200px; object-fit: cover;" alt="...">
-                    <div class="card-body">
-                        <a class="text-dark" href="#!"><h5>{{ story.title }}</h5></a>
-                        <p>{{ story.content|truncatewords:20 }}</p>
-                        <a class="text-arrow-icon small" href="#!">Read more <i data-feather="arrow-right"></i></a>
+            <hr class="mb-4" />
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for story in top_stories %}
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{% if story.image %}{{ story.image.url }}{% else %}{% static 'default-image.jpg' %}{% endif %}" class="card-img-top" alt="{{ story.title }}" style="object-fit: cover; max-height: 200px;">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'article_detail' story.id %}" class="text-dark">{{ story.title }}</a></h5>
+                            <p class="card-text">{{ story.content|striptags|truncatewords:20 }}</p>
+                            <a href="{% url 'article_detail' story.id %}" class="btn btn-primary">Read more</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {% endfor %}
-        </div>
-
-        <!-- Opinion Section -->
-        <h6>Opinion</h6>
-        <hr class="mb-4" />
-        {% for opinion in opinion_posts %}
-        <div class="d-flex mb-4">
-            <div class="avatar avatar-lg">
-                <img class="avatar-img img-fluid" src="{% if opinion.image %}{{ opinion.image.url }}{% else %}{% static 'default-image.jpg' %}{% endif %}"
-                     style="max-width: 100px; max-height: 100px; object-fit: cover;" alt="{{ opinion.title }}">
-            </div>
-            <div class="ms-3">
-                <a class="text-dark" href="#!"><h6>{{ opinion.title }}</h6></a>
-                <div class="small text-gray-500">by {{ opinion.author }}</div>
-            </div>
-        </div>
-        {% endfor %}
-
-        <!-- Additional sections (Tech, Business, Health) -->
-        <div class="row gx-5 mb-5">
-            {% for section, posts in sections.items %}
-            <div class="col-lg-4">
-                <h6>{{ section }}</h6>
-                <hr class="my-4" />
-                {% for post in posts %}
-                <a class="text-dark mb-4" href="#!">
-                    <h6>{{ post.title }}</h6>
-                    <p class="text-gray-600 small mb-4">{{ post.content|truncatewords:15 }}</p>
-                    <img src="{% if post.image %}{{ post.image.url }}{% else %}{% static 'default-image.jpg' %}{% endif %}"
-                         style="max-width: 100%; max-height: 150px; object-fit: cover;" class="img-fluid" alt="{{ post.title }}">
-                </a>
                 {% endfor %}
             </div>
-            {% endfor %}
         </div>
+
+        <!-- Sections by Category -->
+        {% for section, posts in sections.items %}
+        <div class="mb-5">
+            <h6 class="mb-0">{{ section }}</h6>
+            <hr class="mb-4" />
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for post in posts %}
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{% if post.image %}{{ post.image.url }}{% else %}{% static 'default-image.jpg' %}{% endif %}" class="card-img-top" alt="{{ post.title }}" style="object-fit: cover; max-height: 150px;">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'article_detail' post.id %}" class="text-dark">{{ post.title }}</a></h5>
+                            <p class="card-text">{{ post.content|striptags|truncatewords:15 }}</p>
+                            <a href="{% url 'article_detail' post.id %}" class="btn btn-primary">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a href="{% url 'category_articles' section %}" class="text-arrow-icon small mt-2 d-block">View more <i data-feather="arrow-right"></i></a>
+        </div>
+        {% endfor %}
     </div>
 </section>
 {% endblock %}

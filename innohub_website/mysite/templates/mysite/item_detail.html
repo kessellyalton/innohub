@@ -15,6 +15,8 @@
     <p><strong>Location:</strong> {{ item.location }}</p>
     <p><strong>Posted:</strong> {{ item.posted_on|timesince }} ago</p>
     <p>{{ item.description }}</p>
+    <p>To buy  <button type="button" class="btn btn-success" ><a href="{%url 'contact' %}">contact</a></button></p>
+
 </div>
 {% endblock %}
 

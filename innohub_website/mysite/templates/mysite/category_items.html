@@ -1,33 +1,27 @@
 {% extends "mysite/base.html" %}
-{% load static %}
-
-{% block title %}{{ category.name }} Items{% endblock %}
+{% block title %}{{ category_name }} Articles - InnoHub Liberia{% endblock %}
 
 {% block content %}
-<section class="category-items py-10">
+<section class="py-5 pt-10">
     <div class="container">
-        <h2 class="mb-4">{{ category.name }} Items</h2>
-
+        <h2>{{ category_name }} Articles</h2>
+        <hr>
         <div class="row">
-            {% for item in items %}
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <a href="{% url 'item_detail' item.id %}" class="card lift h-100">
-                    <div class="card-flag card-flag-dark">${{ item.price }}</div>
-                    <img class="card-img-top" src="{{ item.image.url|default_if_none:'/path/to/default-image.jpg' }}" alt="{{ item.title }}" />
+            {% for article in articles %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{% if article.image %}{{ article.image.url }}{% else %}{% static 'default-image.jpg' %}{% endif %}"
+                         class="card-img-top" alt="{{ article.title }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ item.title }}</h5>
-                        <p class="text-gray-500">{{ item.location }} &middot; {{ item.posted_on|timesince }} ago</p>
+                        <a href="{% url 'article_detail' article.id %}"><h5>{{ article.title }}</h5></a>
+                        <p>{{ article.content|truncatewords_html:25 }}</p>
+                        <a href="{% url 'article_detail' article.id %}" class="btn btn-primary">Read more</a>
                     </div>
-                </a>
+                </div>
             </div>
-            {% empty %}
-            <p>No items found in this category.</p>
             {% endfor %}
-        </div>
-
-        <div class="text-center mt-4">
-            <a href="{% url 'buy' %}" class="btn btn-secondary">Back to All Categories</a>
         </div>
     </div>
 </section>
 {% endblock %}
+
