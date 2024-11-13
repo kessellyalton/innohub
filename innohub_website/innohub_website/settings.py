@@ -9,7 +9,7 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=False, cast=bool)
 
 # Updated ALLOWED_HOSTS to include Railway domain by default
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv(), default=['innohubliberia.com', 'web-production-xxxxx.up.railway.app'])
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -115,5 +115,5 @@ LOGOUT_REDIRECT_URL = 'home'
 
 FOURSQUARE_API_KEY = config('FOURSQUARE_API_KEY')
 
-# WSGI application setting
+
 WSGI_APPLICATION = 'innohub_website.wsgi.application'
