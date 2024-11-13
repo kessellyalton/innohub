@@ -115,3 +115,5 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 FOURSQUARE_API_KEY = config('FOURSQUARE_API_KEY')
+WSGI_APPLICATION = 'innohub_website.wsgi.application'
+
