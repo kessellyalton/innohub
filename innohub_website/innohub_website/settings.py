@@ -8,7 +8,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv(), default=['innohubliberia.com'])
+# Updated ALLOWED_HOSTS to include Railway domain by default
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv(), default=['innohubliberia.com', 'web-production-xxxxx.up.railway.app'])
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -45,11 +46,11 @@ MESSAGE_TAGS = {
 
 ROOT_URLCONF = 'innohub_website.urls'
 
-# Switch to SQLite for database
+# SQLite database configuration
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',  # SQLite backend
-        'NAME': BASE_DIR / 'db.sqlite3',  # Path to SQLite file in the project directory
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -57,7 +58,7 @@ DATABASES = {
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Add templates directory if you have custom templates
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,14 +71,12 @@ TEMPLATES = [
     },
 ]
 
+# Static and media file settings for deployment
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']  # Ensure this points to the correct directory
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # For collecting static files during deployment
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
-
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -115,5 +114,6 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 FOURSQUARE_API_KEY = config('FOURSQUARE_API_KEY')
-WSGI_APPLICATION = 'innohub_website.wsgi.application'
 
+# WSGI application setting
+WSGI_APPLICATION = 'innohub_website.wsgi.application'
