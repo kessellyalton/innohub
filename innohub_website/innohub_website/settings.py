@@ -10,7 +10,7 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=False, cast=bool)
 
 # Use a wildcard or specific Railway domain for testing in ALLOWED_HOSTS
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv(), default=["*"])
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
