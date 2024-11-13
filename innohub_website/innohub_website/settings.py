@@ -5,11 +5,12 @@ from django.contrib.messages import constants as messages
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Sensitive information is stored in environment variables
 SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-# Updated ALLOWED_HOSTS to include Railway domain by default
-ALLOWED_HOSTS = ['*']
+# Use a wildcard or specific Railway domain for testing in ALLOWED_HOSTS
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv(), default=["*"])
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -54,7 +55,6 @@ DATABASES = {
     }
 }
 
-# Template Configuration
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-# Static and media file settings for deployment
+# Static and media file settings
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -84,7 +84,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = 'kessellyalton1@gmail.com'
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='kessellyalton1@gmail.com')
 
 CKEDITOR_5_CONFIGS = {
     'default': {
@@ -115,5 +115,5 @@ LOGOUT_REDIRECT_URL = 'home'
 
 FOURSQUARE_API_KEY = config('FOURSQUARE_API_KEY')
 
-
+# WSGI application setting
 WSGI_APPLICATION = 'innohub_website.wsgi.application'
