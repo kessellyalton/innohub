@@ -21,5 +21,6 @@ RUN python manage.py collectstatic --noinput
 # Expose port 8000 to allow external access
 EXPOSE 8000
 
+
 # Run the application with Gunicorn as the WSGI server
 CMD ["gunicorn", "innohub_website.wsgi:application", "--bind", "0.0.0.0:8000"]
